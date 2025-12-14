@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Agensi AOT24</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            padding: 40px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo img {
+            max-width: 150px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff6b35;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .info-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff6b35;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .info-box p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .info-box strong {
+            color: #ff6b35;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #ff6b35;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .error-message {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background: #f8d7da;
+            color: #721c24;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://files.catbox.moe/o8zak3.jpeg" alt="Logo AOT24">
+        </div>
+        
+        <h1>Pendaftaran Agensi AOT24</h1>
+        
+        <div class="info-box">
+            <p><strong>✨ Terbuka untuk semua!</strong></p>
+            <p>Agensi ini boleh diikuti oleh semua orang yang bisa berbahasa Indonesia/Malaysia.</p>
+            <p><strong>👶 Budak bawah umur 12 tahun pun boleh join!</strong></p>
+            <p><strong>💯 AGENSI TIDAK BERBAYAR (100% PERCUMA)</strong></p>
+        </div>
+
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="nama">Nama Penuh *</label>
+                <input type="text" id="nama" name="nama" required placeholder="Masukkan nama penuh anda">
+            </div>
+
+            <div class="form-group">
+                <label for="umur">Umur *</label>
+                <input type="number" id="umur" name="umur" required placeholder="Masukkan umur anda" min="1" max="120">
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username *</label>
+                <input type="text" id="username" name="username" required placeholder="Masukkan username anda">
+            </div>
+
+            <div class="form-group">
+                <label for="title">Title *</label>
+                <textarea id="title" name="title" required placeholder="Masukkan title atau perkenalan ringkas"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Hantar Pendaftaran</button>
+        </form>
+
+        <div class="success-message" id="successMessage">
+            ✅ Pendaftaran berjaya dihantar! Sila tunggu kelulusan daripada admin.
+        </div>
+
+        <div class="error-message" id="errorMessage">
+            ❌ Maaf, terdapat masalah. Sila cuba lagi.
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const successMsg = document.getElementById('successMessage');
+            const errorMsg = document.getElementById('errorMessage');
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Menghantar...';
+            
+            successMsg.style.display = 'none';
+            errorMsg.style.display = 'none';
+            
+            const nama = document.getElementById('nama').value;
+            const umur = document.getElementById('umur').value;
+            const username = document.getElementById('username').value;
+            const title = document.getElementById('title').value;
+            
+            try {
+                // Simpan ke storage
+                const pendaftaran = {
+                    id: Date.now(),
+                    nama: nama,
+                    umur: umur,
+                    username: username,
+                    title: title,
+                    tarikh: new Date().toLocaleString('ms-MY'),
+                    status: 'pending'
+                };
+                
+                // Dapatkan list pendaftaran sedia ada
+                const existingData = await window.storage.get('pendaftaran-list', true);
+                let pendaftaranList = [];
+                
+                if (existingData && existingData.value) {
+                    try {
+                        pendaftaranList = JSON.parse(existingData.value);
+                    } catch (e) {
+                        pendaftaranList = [];
+                    }
+                }
+                
+                pendaftaranList.push(pendaftaran);
+                
+                // Simpan kembali
+                await window.storage.set('pendaftaran-list', JSON.stringify(pendaftaranList), true);
+                
+                successMsg.style.display = 'block';
+                document.getElementById('registrationForm').reset();
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Hantar Pendaftaran';
+                
+            } catch (error) {
+                console.error('Error:', error);
+                errorMsg.style.display = 'block';
+                errorMsg.textContent = '❌ ' + (error.message || 'Maaf, terdapat masalah. Sila cuba lagi.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Hantar Pendaftaran';
+            }
+        });
+    </script>
+</body>
+</html>
